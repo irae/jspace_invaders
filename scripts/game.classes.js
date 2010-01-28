@@ -1,7 +1,3 @@
-var GameGroup = new Class({
-    "add": function() {}
-});
-
 var GameObject = new Class({
     "initialize": function(type) {
         this.object = new Element("div", {
@@ -60,20 +56,31 @@ var GameShot = new Class({
     "Extends": GameObject,
     "initialize": function() {
         this.parent("shot");
-    },
-    "fire": function(position, direction) {
+
+        // setting animation things
         this.object.set("morph", {
             "transition": "linear",
             "duration": 1000,
-            "onComplete": function() {
-                this.object.destroy()
-            }.bind(this)
+            "onComplete": this.destroy.bind(this)
         });
+    },
+    "fire": function(position, direction) {
         this.object.setStyles({
             "left": position[0],
             "top": position[1]
-        }).morph({
+        });
+        this.object.morph({
             "top": 0
         });
+    },
+    "destroy": function() {
+        this.object.destroy()
+    }
+});
+
+var GameEnemy = new Class({
+    "Extends": GameObject,
+    "initialize": function() {
+        this.parent("enemy");
     }
 });

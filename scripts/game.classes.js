@@ -32,7 +32,7 @@ var GamePlayer = new Class({
         if(this.canMoveTo(position)) {
             this.left = position;
             this.object.morph({
-                "left":  this.left + "px"
+                "left":  this.left
             });
         }
     },
@@ -40,7 +40,8 @@ var GamePlayer = new Class({
         return position >= 0 && position <= 642 - 30;
     },
     "fire": function() {
-        alert("fire!");
+        var coords = this.object.getCoordinates("stage");
+        new GameShot().fire([this.left + 13, coords.top.toInt() - 20], "top");
     },
     "respondToKey": function(e) {
         switch(e.key) {
@@ -51,6 +52,21 @@ var GamePlayer = new Class({
             case "space":
                 return this.fire();
         }
-        return false;
+        return true;
+    }
+});
+
+var GameShot = new Class({
+    "Extends": GameObject,
+    "initialize": function() {
+        this.parent("shot");
+    },
+    "fire": function(position, direction) {
+        this.object.setStyles({
+            "left": position[0],
+            "top": position[1]
+        }).morph({
+            "top": 0
+        })
     }
 });

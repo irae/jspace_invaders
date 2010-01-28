@@ -39,3 +39,10 @@ body {
 .enemy {
     background: #f00;
 }
+
+.shot {
+    background: #0f0;
+    height: 15px;
+    position: absolute;
+    width: 3px;
+}

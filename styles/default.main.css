@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #000;
+}
+
+body {
+    border: 1px solid #fff;
+    height: 480px;
+    left: 50%;
+    margin: -248px 0 0 -328px;
+    padding: 8px;
+    position: absolute;
+    top: 50%;
+    width: 642px;
+}
+
+#stage {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.player,
+.enemy {
+    height: 30px;
+    position: absolute;
+    width: 30px;
+}
+
+.player {
+    background: #fff;
+    bottom: 0;
+}
+
+.enemy {
+    background: #f00;
+}

@@ -62,11 +62,18 @@ var GameShot = new Class({
         this.parent("shot");
     },
     "fire": function(position, direction) {
+        this.object.set("morph", {
+            "transition": "linear",
+            "duration": 1000,
+            "onComplete": function() {
+                this.object.destroy()
+            }.bind(this)
+        });
         this.object.setStyles({
             "left": position[0],
             "top": position[1]
         }).morph({
             "top": 0
-        })
+        });
     }
 });
